@@ -1,4 +1,5 @@
 import { ProjectCard } from "@/components/content/ProjectCard";
+import { PageIntro } from "@/components/ui/PageIntro";
 import { createPageMetadata } from "@/lib/config/metadata";
 import { projects } from "@/lib/content/projects";
 
@@ -12,13 +13,10 @@ export const metadata = createPageMetadata({
 export default function BuildingPage() {
   return (
     <div className="page-container page-stack">
-      <section className="page-intro">
-        <h1>What I&apos;m Building</h1>
-        <p>
-          Products, experiments, and systems I&apos;m actively working on —
-          from personal tools to community projects.
-        </p>
-      </section>
+      <PageIntro
+        title="What I'm Building"
+        description="Products, experiments, and systems I'm actively working on — from personal tools to community projects."
+      />
 
       <section className="flex flex-col gap-5 lg:gap-6">
         {projects.map((project) => (

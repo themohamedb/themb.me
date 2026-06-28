@@ -1,5 +1,7 @@
 import { HowIWorkCard } from "@/components/content/HowIWorkCard";
+import { PageIntro } from "@/components/ui/PageIntro";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Tag } from "@/components/ui/Tag";
 import { createPageMetadata } from "@/lib/config/metadata";
 import { siteConfig } from "@/lib/config/site";
 import { howIWorkItems } from "@/lib/content/how-i-work";
@@ -31,16 +33,11 @@ export default function AboutPage() {
         />
 
         <div className="relative space-y-8 lg:max-w-3xl">
-          <div className="page-intro !space-y-5">
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
-              About
-            </p>
-            <h1>{siteConfig.fullName}</h1>
-            <p>
-              Product builder working across design, code, workflows, and
-              practical digital systems.
-            </p>
-          </div>
+          <PageIntro
+            title={siteConfig.fullName}
+            description="Product builder working across design, code, workflows, and practical digital systems."
+            className="!space-y-5"
+          />
 
           <div className="max-w-2xl space-y-6 border-t border-white/[0.06] pt-8">
             <p className="text-sm leading-relaxed text-neutral-400 sm:text-base">
@@ -55,12 +52,7 @@ export default function AboutPage() {
 
             <div className="flex flex-wrap gap-2 pt-1">
               {stackTools.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-neutral-500"
-                >
-                  {tool}
-                </span>
+                <Tag key={tool} label={tool} className="min-w-0 px-3 text-[10px]" />
               ))}
             </div>
 

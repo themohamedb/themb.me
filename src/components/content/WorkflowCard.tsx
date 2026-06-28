@@ -1,4 +1,5 @@
 import type { Workflow } from "@/types/content";
+import { Tag } from "@/components/ui/Tag";
 
 interface WorkflowCardProps {
   workflow: Workflow;
@@ -16,12 +17,7 @@ export function WorkflowCard({ workflow }: WorkflowCardProps) {
         </div>
         <div className="flex flex-wrap gap-2">
           {workflow.tools.map((tool) => (
-            <span
-              key={tool}
-              className="rounded-full border border-white/[0.08] bg-black px-2.5 py-1 text-[11px] text-neutral-500"
-            >
-              {tool}
-            </span>
+            <Tag key={tool} label={tool} className="min-w-0 px-2.5 text-[10px]" />
           ))}
         </div>
       </div>

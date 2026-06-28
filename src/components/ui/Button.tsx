@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "text";
 
 interface ButtonProps {
   href: string;
@@ -18,6 +18,7 @@ const variantStyles: Record<ButtonVariant, string> = {
     "border-border bg-transparent text-muted-light hover:border-neutral-700",
   ghost:
     "border border-transparent bg-transparent text-muted hover:text-muted-light",
+  text: "border-0 bg-transparent px-0 py-0 font-normal text-muted hover:text-neutral-300",
 };
 
 export function Button({
@@ -28,8 +29,13 @@ export function Button({
   external = false,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-full border px-5 py-2 text-xs font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
-    variantStyles[variant],
+    "inline-flex items-center justify-center text-xs transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
+    variant === "text"
+      ? variantStyles.text
+      : cn(
+          "rounded-full border px-5 py-2 font-semibold",
+          variantStyles[variant],
+        ),
     className,
   );
 

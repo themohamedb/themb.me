@@ -1,5 +1,5 @@
 import { NoteRow } from "@/components/content/NoteRow";
-import { BackLink } from "@/components/ui/BackLink";
+import { PageIntro } from "@/components/ui/PageIntro";
 import { createPageMetadata } from "@/lib/config/metadata";
 import { getAllNotes } from "@/lib/markdown";
 
@@ -15,14 +15,10 @@ export default function NotesPage() {
 
   return (
     <div className="page-container page-stack">
-      <section className="page-intro">
-        <BackLink href="/" label="Back to home" />
-        <h1>Notes &amp; Ideas</h1>
-        <p>
-          Short notes on design, building, tools, and the work of turning rough
-          ideas into clear, useful products.
-        </p>
-      </section>
+      <PageIntro
+        title="Notes & Ideas"
+        description="Short notes on design, building, tools, and the work of turning rough ideas into clear, useful products."
+      />
 
       <section>
         {notes.map((note, index) => (

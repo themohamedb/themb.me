@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/content/MarkdownContent";
-import { BackLink } from "@/components/ui/BackLink";
+import { PageIntro } from "@/components/ui/PageIntro";
 import { createPageMetadata } from "@/lib/config/metadata";
 import { getAllNoteSlugs, getNoteBySlug } from "@/lib/markdown";
 
@@ -38,19 +38,7 @@ export default async function NotePage({ params }: NotePageProps) {
   return (
     <div className="page-container page-stack">
       <article className="mx-auto max-w-2xl space-y-8">
-        <header className="space-y-4">
-          <BackLink href="/notes" label="Back to notes" />
-          <div className="space-y-3">
-            <h1 className="text-3xl font-medium tracking-tight text-white sm:text-4xl">
-              {note.title}
-            </h1>
-            {note.description ? (
-              <p className="text-base leading-relaxed text-neutral-400">
-                {note.description}
-              </p>
-            ) : null}
-          </div>
-        </header>
+        <PageIntro title={note.title} description={note.description} />
 
         <MarkdownContent content={note.content} />
       </article>

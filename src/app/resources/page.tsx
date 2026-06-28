@@ -1,5 +1,6 @@
 import { createPageMetadata } from "@/lib/config/metadata";
 import { resourceSections } from "@/lib/content/resources";
+import { PageIntro } from "@/components/ui/PageIntro";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = createPageMetadata({
@@ -12,14 +13,11 @@ export const metadata = createPageMetadata({
 export default function ResourcesPage() {
   return (
     <div className="page-container page-stack">
-      <section className="page-intro lg:max-w-3xl">
-        <h1>Resources / Lab</h1>
-        <p>
-          A living space for useful resources, experiments, workflows, and
-          practical systems. Some are finished, some are still being tested. The
-          point is to document the work clearly and keep improving it.
-        </p>
-      </section>
+      <PageIntro
+        title="Resources / Lab"
+        description="A living space for useful resources, experiments, workflows, and practical systems. Some are finished, some are still being tested. The point is to document the work clearly and keep improving it."
+        className="lg:max-w-3xl"
+      />
 
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
         {resourceSections.map((section) => (

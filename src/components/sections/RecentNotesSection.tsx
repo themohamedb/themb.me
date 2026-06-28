@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 import { NoteRow } from "@/components/content/NoteRow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getAllNotes } from "@/lib/markdown";
@@ -10,12 +10,9 @@ export function RecentNotesSection() {
     <section className="space-y-1">
       <div className="mb-4 flex items-center justify-between gap-4">
         <SectionHeading title="Recent Notes" />
-        <Link
-          href="/notes"
-          className="text-xs text-muted transition-colors hover:text-neutral-300"
-        >
+        <Button href="/notes" variant="text">
           view all
-        </Link>
+        </Button>
       </div>
 
       <div>

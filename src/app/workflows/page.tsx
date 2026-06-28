@@ -1,5 +1,6 @@
 import { WorkflowCard } from "@/components/content/WorkflowCard";
 import { ToolCard } from "@/components/content/ToolCard";
+import { PageIntro } from "@/components/ui/PageIntro";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { createPageMetadata } from "@/lib/config/metadata";
 import { tools } from "@/lib/content/tools";
@@ -15,17 +16,11 @@ export const metadata = createPageMetadata({
 export default function WorkflowsPage() {
   return (
     <div className="page-container page-stack">
-      <section className="page-intro lg:max-w-3xl">
-        <h1>Workflows</h1>
-        <p>
-          I use tools as a production system. Figma helps me think visually.
-          Notion keeps ideas and projects structured. Claude helps me plan and
-          reason. Perplexity helps me research. Cursor and Codex help me turn
-          designs into working products. Canva helps me produce fast visual
-          assets. The goal is not to use more tools. The goal is to move from
-          idea to useful output with clarity and taste.
-        </p>
-      </section>
+      <PageIntro
+        title="Workflows"
+        description="I use tools as a production system. Figma helps me think visually. Notion keeps ideas and projects structured. Claude helps me plan and reason. Perplexity helps me research. Cursor and Codex help me turn designs into working products. Canva helps me produce fast visual assets. The goal is not to use more tools. The goal is to move from idea to useful output with clarity and taste."
+        className="lg:max-w-3xl"
+      />
 
       <section className="space-y-6">
         <SectionHeading title="Production workflows" />
