@@ -13,31 +13,44 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: team_EF806ItNufAD7lOFRpDXtm76
+      VERCEL_PROJECT_ID: prj_GeMVrkA2BCXoRyMI58o1vkqOHxme
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check Vercel token
+        id: token
+        run: |
+          if [ -z "${VERCEL_TOKEN}" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Deploy skipped::VERCEL_TOKEN is not set in GitHub Actions secrets."
+            echo "Fix: ./scripts/setup-github-actions-deploy.sh"
+            echo "Or: https://github.com/themohamedb/themb.me/settings/secrets/actions"
+            echo "Alternative: use Vercel Git integration or ./scripts/enable-auto-deploy.sh"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-node@v4
+        if: steps.token.outputs.configured == 'true'
         with:
           node-version: "24"
           cache: npm
 
       - name: Install Vercel CLI
+        if: steps.token.outputs.configured == 'true'
         run: npm install -g vercel@54.18.1
 
       - name: Pull Vercel Environment
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: team_EF806ItNufAD7lOFRpDXtm76
-          VERCEL_PROJECT_ID: prj_GeMVrkA2BCXoRyMI58o1vkqOHxme
+        if: steps.token.outputs.configured == 'true'
+        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
 
       - name: Build
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: team_EF806ItNufAD7lOFRpDXtm76
-          VERCEL_PROJECT_ID: prj_GeMVrkA2BCXoRyMI58o1vkqOHxme
+        if: steps.token.outputs.configured == 'true'
+        run: vercel build --prod --token="$VERCEL_TOKEN"
 
       - name: Deploy to Production
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: team_EF806ItNufAD7lOFRpDXtm76
-          VERCEL_PROJECT_ID: prj_GeMVrkA2BCXoRyMI58o1vkqOHxme
+        if: steps.token.outputs.configured == 'true'
+        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
