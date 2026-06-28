@@ -56,6 +56,18 @@ else
 fi
 
 echo ""
+echo "→ Configuring git author identity for GitHub attribution..."
+GITHUB_LOGIN="$(gh api user -q .login 2>/dev/null || echo themohamedb)"
+GITHUB_ID="$(gh api user -q .id 2>/dev/null || echo 178800164)"
+GITHUB_NAME="$(gh api user -q .name 2>/dev/null || echo "Mohamed Bashir")"
+GITHUB_EMAIL="${GITHUB_ID}+${GITHUB_LOGIN}@users.noreply.github.com"
+git config user.name "$GITHUB_NAME"
+git config user.email "$GITHUB_EMAIL"
+echo "  Name:  $GITHUB_NAME"
+echo "  Email: $GITHUB_EMAIL"
+echo "  (Uses GitHub noreply email so commits always link to your profile.)"
+
+echo ""
 echo "→ Configuring branch tracking..."
 git config push.autoSetupRemote true
 git fetch origin main 2>/dev/null || true
@@ -66,6 +78,9 @@ else
   echo "  Remote main not found yet — first push will set tracking automatically."
 fi
 
+echo ""
+echo "If the repo sidebar shows \"Contributors 2\" with missing avatars, run:"
+echo "  ./scripts/fix-github-contributors.sh --force"
 echo ""
 echo "GitHub is ready. Push your code with:"
 echo "  ./scripts/push-github.sh"

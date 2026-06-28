@@ -9,6 +9,9 @@
     "lint": "eslint",
     "deploy": "vercel deploy --prod --yes",
     "setup:github": "./scripts/setup-github.sh",
+    "fix:github-contributors": "./scripts/fix-github-contributors.sh --force",
+    "setup:github-actions": "./scripts/setup-github-actions-deploy.sh",
+    "rotate:vercel-token": "./scripts/rotate-vercel-token.sh",
     "push:github": "./scripts/push-github.sh"
   },
   "dependencies": {

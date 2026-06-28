@@ -4,11 +4,11 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-echo "→ Enabling local post-push deploy hook..."
+echo "→ Enabling post-push status hook..."
 git config core.hooksPath .githooks
 chmod +x .githooks/post-push
 
-echo "→ Connecting Vercel to GitHub (if remote exists)..."
+echo "→ Connecting Vercel to GitHub..."
 REMOTE="$(git remote get-url origin 2>/dev/null || true)"
 if [[ -n "$REMOTE" ]]; then
   npx vercel git connect "$REMOTE" --yes || true
@@ -20,12 +20,12 @@ fi
 echo ""
 echo "Auto-deploy is configured."
 echo ""
-echo "Option A (recommended): Vercel Git integration"
-echo "  Every git push deploys automatically once GitHub is connected."
+echo "How it works:"
+echo "  1. Commit your changes"
+echo "  2. Push to main: ./scripts/push-github.sh -m \"Your message\""
+echo "  3. Vercel starts building immediately — no manual deploy command needed"
 echo ""
-echo "Option B: GitHub Actions"
-echo "  Add VERCEL_TOKEN to GitHub repo secrets:"
-echo "  https://github.com/themohamedb/themb.me/settings/secrets/actions"
+echo "Track builds: https://vercel.com/mohamed-s-projects-3e49e0b6/themb/deployments"
+echo "Live site:    https://themb.me"
 echo ""
-echo "Option C: Local post-push hook"
-echo "  Runs 'vercel deploy --prod' after each successful git push."
+echo "For instant local preview while editing, run: npm run dev"

@@ -5,7 +5,9 @@ export function HeroSection() {
   return (
     <section className="space-y-8 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-12 lg:space-y-0 xl:gap-16">
       <div className="space-y-3 lg:space-y-6">
-        <p className="text-xs text-muted">hello world</p>
+        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+          Portfolio
+        </p>
         <div className="space-y-3 lg:space-y-4">
           <h1 className="text-2xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl lg:leading-[1.1]">
             I&apos;m {siteConfig.name}
