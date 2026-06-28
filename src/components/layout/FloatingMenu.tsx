@@ -27,7 +27,7 @@ export function FloatingMenu() {
   }, [open]);
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 p-4 pb-6 lg:hidden">
+    <div className="relative z-50 flex w-full justify-end px-4 pb-6 lg:hidden">
       {open ? (
         <button
           type="button"

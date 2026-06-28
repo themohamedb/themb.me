@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Deploy to Vercel after a successful push (fallback when Git integration is not connected).
+
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+if [[ "${SKIP_VERCEL_DEPLOY:-}" == "1" ]]; then
+  exit 0
+fi
+
+echo "→ Deploying to Vercel..."
+npx vercel deploy --prod --yes

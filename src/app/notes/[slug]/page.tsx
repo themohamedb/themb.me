@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/content/MarkdownContent";
+import { BackLink } from "@/components/ui/BackLink";
 import { createPageMetadata } from "@/lib/config/metadata";
 import { getAllNoteSlugs, getNoteBySlug } from "@/lib/markdown";
 
@@ -39,12 +39,7 @@ export default async function NotePage({ params }: NotePageProps) {
     <div className="page-container page-stack">
       <article className="mx-auto max-w-2xl space-y-8">
         <header className="space-y-4">
-          <Link
-            href="/notes"
-            className="inline-block text-sm text-neutral-500 transition-colors hover:text-neutral-300"
-          >
-            ← back to notes
-          </Link>
+          <BackLink href="/notes" label="Back to notes" />
           <div className="space-y-3">
             <h1 className="text-3xl font-medium tracking-tight text-white sm:text-4xl">
               {note.title}
