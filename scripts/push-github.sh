@@ -81,6 +81,21 @@ ensure_origin() {
   fi
 }
 
+is_github_bootstrap_commit() {
+  local remote_sha="$1"
+  local commit_count
+  commit_count="$(git rev-list --count "$remote_sha" 2>/dev/null || echo 0)"
+  [[ "$commit_count" == "1" ]] || return 1
+
+  local subject
+  subject="$(git log -1 --format='%s' "$remote_sha")"
+  [[ "$subject" == *"Initial commit"* ]] || return 1
+
+  local changed_files
+  changed_files="$(git diff-tree --no-commit-id --name-only -r "$remote_sha")"
+  [[ "$changed_files" == "README.md" || "$changed_files" == "README" ]]
+}
+
 ensure_auth() {
   if gh auth status >/dev/null 2>&1; then
     return 0
@@ -160,13 +175,18 @@ if [[ "$FORCE_WITH_LEASE" -eq 1 ]]; then
   PUSH_ARGS=(--force-with-lease -u origin "$BRANCH")
 elif [[ -n "$REMOTE_SHA" && "$LOCAL_SHA" != "$REMOTE_SHA" ]]; then
   if ! git merge-base --is-ancestor "$REMOTE_SHA" "$LOCAL_SHA" 2>/dev/null; then
-    echo "✗ Local and remote histories have diverged."
-    echo "  Local:  $LOCAL_SHA"
-    echo "  Remote: $REMOTE_SHA"
-    echo ""
-    echo "If the remote only has an initial README and you want to replace it:"
-    echo "  ./scripts/push-github.sh --force-with-lease"
-    exit 1
+    if is_github_bootstrap_commit "$REMOTE_SHA"; then
+      echo "→ Remote only has GitHub's initial README; replacing with local project history."
+      PUSH_ARGS=(--force-with-lease -u origin "$BRANCH")
+    else
+      echo "✗ Local and remote histories have diverged."
+      echo "  Local:  $LOCAL_SHA"
+      echo "  Remote: $REMOTE_SHA"
+      echo ""
+      echo "If you intentionally want to overwrite the remote:"
+      echo "  ./scripts/push-github.sh --force-with-lease"
+      exit 1
+    fi
   fi
 fi
 

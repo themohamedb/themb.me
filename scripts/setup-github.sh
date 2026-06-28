@@ -56,6 +56,17 @@ else
 fi
 
 echo ""
+echo "→ Configuring branch tracking..."
+git config push.autoSetupRemote true
+git fetch origin main 2>/dev/null || true
+if git rev-parse origin/main >/dev/null 2>&1; then
+  git branch --set-upstream-to=origin/main main 2>/dev/null || true
+  echo "✓ main tracks origin/main (git pull / git push work without extra flags)."
+else
+  echo "  Remote main not found yet — first push will set tracking automatically."
+fi
+
+echo ""
 echo "GitHub is ready. Push your code with:"
 echo "  ./scripts/push-github.sh"
 echo "  npm run push:github"
