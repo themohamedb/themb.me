@@ -86,10 +86,21 @@ ensure_auth() {
     return 0
   fi
 
+  # Git may already be authenticated via osxkeychain even when gh is not.
+  if git ls-remote origin HEAD >/dev/null 2>&1; then
+    echo "→ GitHub CLI not logged in, but git credentials work — continuing."
+    return 0
+  fi
+
   echo "✗ Not logged into GitHub."
   echo ""
-  echo "Run once:"
-  echo "  gh auth login"
+  echo "Easiest fix (opens your browser):"
+  echo "  gh auth login --web"
+  echo ""
+  echo "Or with a personal access token (classic, scopes: repo):"
+  echo "  gh auth login --with-token < token.txt"
+  echo ""
+  echo "Create a token at: https://github.com/settings/tokens/new"
   echo ""
   echo "Or run the setup script:"
   echo "  ./scripts/setup-github.sh"

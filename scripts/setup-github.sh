@@ -26,13 +26,21 @@ if gh auth status >/dev/null 2>&1; then
   gh auth status
   echo ""
   echo "✓ GitHub CLI is authenticated."
+elif git ls-remote origin HEAD >/dev/null 2>&1; then
+  echo "  GitHub CLI is not logged in, but git can reach the remote."
+  echo ""
+  echo "  Push will work. To also enable gh commands, run:"
+  echo "    gh auth login --web"
 else
   echo "✗ Not logged into GitHub."
   echo ""
-  echo "Run this once, then re-run ./scripts/setup-github.sh:"
-  echo "  gh auth login"
+  echo "Easiest fix (opens your browser):"
+  echo "  gh auth login --web"
   echo ""
-  echo "Choose: GitHub.com → HTTPS → Login with a web browser"
+  echo "Or with a personal access token (classic, scopes: repo):"
+  echo "  gh auth login --with-token < token.txt"
+  echo ""
+  echo "Create a token at: https://github.com/settings/tokens/new"
   exit 1
 fi
 
@@ -40,6 +48,8 @@ echo ""
 echo "→ Verifying access to themohamedb/themb.me..."
 if gh repo view themohamedb/themb.me --json visibility,url -q '"\(.visibility) \(.url)"' 2>/dev/null; then
   echo "✓ Repository is reachable."
+elif git ls-remote origin HEAD >/dev/null 2>&1; then
+  echo "✓ Repository is reachable via git."
 else
   echo "✗ Could not access the repository. Check that it exists and you have push access."
   exit 1
