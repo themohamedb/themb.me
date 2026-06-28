@@ -20,7 +20,7 @@ export default function BuildingPage() {
         </p>
       </section>
 
-      <section className="grid gap-3 sm:grid-cols-2">
+      <section className="flex flex-col gap-5 lg:gap-6">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

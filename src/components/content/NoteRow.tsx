@@ -1,31 +1,30 @@
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import type { Note } from "@/types/content";
+import { cn } from "@/lib/utils";
 
 interface NoteRowProps {
   note: Note;
+  showDivider?: boolean;
 }
 
-export function NoteRow({ note }: NoteRowProps) {
+export function NoteRow({ note, showDivider = true }: NoteRowProps) {
   return (
     <Link
       href={`/notes/${note.slug}`}
-      className="group block rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 transition-colors hover:border-white/[0.14] hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+      className={cn(
+        "group block py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
+        showDivider && "border-b border-border-subtle",
+      )}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="space-y-2">
-          <h3 className="text-base font-medium text-white group-hover:text-white">
-            {note.title}
-          </h3>
-          <p className="text-sm leading-relaxed text-neutral-400">
+      <div className="flex items-center justify-between gap-6">
+        <div className="min-w-0 space-y-1.5">
+          <h3 className="text-xs text-white">{note.title}</h3>
+          <p className="text-[10px] leading-normal text-muted">
             {note.description}
           </p>
         </div>
-        <span
-          aria-hidden
-          className="mt-1 shrink-0 text-neutral-600 transition-transform group-hover:translate-x-0.5 group-hover:text-neutral-400"
-        >
-          →
-        </span>
+        <ArrowIcon className="h-6 w-6 shrink-0 text-neutral-500 transition-colors group-hover:text-neutral-300" />
       </div>
     </Link>
   );

@@ -3,17 +3,27 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
-  --muted: #a3a3a3;
-  --border: rgba(255, 255, 255, 0.08);
-  --surface: rgba(255, 255, 255, 0.02);
+  --muted: #626264;
+  --muted-light: #d4d4d4;
+  --border: #242323;
+  --border-subtle: #2a2a2a;
+  --border-menu: #2d2d2d;
+  --surface: #111111;
+  --surface-elevated: #101010;
+  --surface-tag: #191818;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
   --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-menu: var(--border-menu);
   --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-tag: var(--surface-tag);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -45,11 +55,11 @@ body {
 }
 
 .page-container {
-  @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:max-w-7xl lg:px-8;
+  @apply mx-auto w-full max-w-6xl px-9 sm:px-6 lg:max-w-7xl lg:px-8;
 }
 
 .page-stack {
-  @apply space-y-16 py-10 sm:py-12 lg:py-16;
+  @apply space-y-14 py-10 sm:space-y-16 sm:py-12 lg:py-16;
 }
 
 .page-intro {
@@ -57,9 +67,29 @@ body {
 }
 
 .page-intro h1 {
-  @apply text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-5xl;
+  @apply text-2xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl;
 }
 
 .page-intro p {
-  @apply text-base leading-relaxed text-neutral-400 sm:text-lg;
+  @apply text-sm leading-relaxed text-muted sm:text-lg sm:text-neutral-400;
+}
+
+.editorial-label {
+  @apply font-mono text-[10px] uppercase tracking-[0.18em] text-muted;
+}
+
+.editorial-heading {
+  @apply text-2xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl;
+}
+
+.editorial-body {
+  @apply text-sm leading-relaxed text-muted sm:text-base sm:text-neutral-400;
+}
+
+.drop-cap-section {
+  @apply relative;
+}
+
+.drop-cap {
+  @apply float-left mr-3 mt-1 font-serif text-5xl leading-none text-foreground sm:text-6xl;
 }

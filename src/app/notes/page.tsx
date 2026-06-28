@@ -22,9 +22,13 @@ export default function NotesPage() {
         </p>
       </section>
 
-      <section className="space-y-3 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0">
-        {notes.map((note) => (
-          <NoteRow key={note.slug} note={note} />
+      <section>
+        {notes.map((note, index) => (
+          <NoteRow
+            key={note.slug}
+            note={note}
+            showDivider={index < notes.length - 1}
+          />
         ))}
       </section>
     </div>

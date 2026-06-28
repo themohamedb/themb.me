@@ -7,29 +7,26 @@ export function RecentNotesSection() {
   const notes = getAllNotes().slice(0, 3);
 
   return (
-    <section className="space-y-6">
-      <div className="flex items-end justify-between gap-4">
+    <section className="space-y-1">
+      <div className="mb-4 flex items-center justify-between gap-4">
         <SectionHeading title="Recent Notes" />
         <Link
           href="/notes"
-          className="hidden text-sm text-neutral-500 transition-colors hover:text-neutral-300 sm:inline-block"
+          className="text-xs text-muted transition-colors hover:text-neutral-300"
         >
           view all
         </Link>
       </div>
 
-      <div className="space-y-3">
-        {notes.map((note) => (
-          <NoteRow key={note.slug} note={note} />
+      <div>
+        {notes.map((note, index) => (
+          <NoteRow
+            key={note.slug}
+            note={note}
+            showDivider={index < notes.length - 1}
+          />
         ))}
       </div>
-
-      <Link
-        href="/notes"
-        className="inline-block text-sm text-neutral-500 transition-colors hover:text-neutral-300 sm:hidden"
-      >
-        view all notes
-      </Link>
     </section>
   );
 }
