@@ -27,7 +27,7 @@ export function FloatingMenu() {
   }, [open]);
 
   return (
-    <div className="relative z-50 flex w-full justify-end px-4 pb-6 lg:hidden">
+    <div className="fixed right-7 z-50 bottom-[calc(45px+env(safe-area-inset-bottom,0px))] lg:hidden">
       {open ? (
         <button
           type="button"
@@ -37,7 +37,7 @@ export function FloatingMenu() {
         />
       ) : null}
 
-      <div className="relative ml-auto w-fit">
+      <div className="relative w-fit">
         <div
           className={cn(
             "absolute bottom-[calc(100%+12px)] right-0 w-[240px] overflow-hidden rounded-[10px] border border-border-menu bg-surface-elevated shadow-2xl shadow-black/50 transition-all duration-300",
@@ -105,7 +105,7 @@ export function FloatingMenu() {
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          className="ml-auto flex h-[31px] w-[31px] items-center justify-center rounded-[15.5px] border border-[#252525] bg-surface shadow-[0_4px_6px_rgba(0,0,0,0.35)] transition-colors hover:border-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+          className="flex h-[31px] w-[31px] items-center justify-center rounded-[15.5px] border border-[#252525] bg-surface shadow-[0_4px_6px_rgba(0,0,0,0.35)] transition-colors hover:border-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <span aria-hidden className="flex flex-col gap-[3px]">
