@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# Vercel Git integration deploys on every push to GitHub.
-# No local deploy step is needed (and would duplicate the Vercel build).
-
-set -euo pipefail
-
-echo "→ Vercel will deploy automatically from GitHub."
-echo "  Track progress: https://vercel.com/mohamed-s-projects-3e49e0b6/themb/deployments"
