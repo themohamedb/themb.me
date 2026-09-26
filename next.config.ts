@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV !== "production";
+const isPreview = process.env.VERCEL_ENV === "preview";
 
 // Next.js injects inline bootstrap scripts, so 'unsafe-inline' is required
 // without nonces; dev additionally needs 'unsafe-eval' for fast refresh.
@@ -51,6 +52,8 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
   },
+  // Preview deployments must never be indexed by search engines.
+  ...(isPreview ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] : []),
 ];
 
 const nextConfig: NextConfig = {
