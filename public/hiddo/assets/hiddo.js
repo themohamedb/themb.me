@@ -512,14 +512,14 @@
   /* ---------- Navigation lexicon: TopBar and Menu ---------- */
 
   /* TopBar — the bar at the top of a screen.
-     The menu button always shows the word "Liiska" next to the icon: a bare hamburger is the least understood icon in mobile UI. */
+     The menu button always shows the word "Tusmada" next to the icon: a bare hamburger is the least understood icon in mobile UI. */
   function TopBar(props) {
     var lead = props.leading === undefined ? "menu" : props.leading;
     var open = useState(false);
     var leadBtn = null;
     if (lead === "menu") leadBtn = h("button", { type: "button", className: "hd-top-menu", "aria-expanded": open[0] ? "true" : "false", "aria-controls": "hd-top-menu-panel",
         onClick: function () { open[1](!open[0]); if (props.onLeading) props.onLeading(); } },
-        h(Ic, { name: open[0] ? "x" : "menu", size: 20 }), h("span", null, open[0] ? "Xir" : "Liiska"));
+        h(Ic, { name: open[0] ? "x" : "menu", size: 20 }), h("span", null, open[0] ? "Xir" : "Tusmada"));
     if (lead === "back") leadBtn = h("button", { type: "button", className: "hd-top-icon", "aria-label": "Dib u noqo", title: "Dib u noqo", onClick: props.onLeading }, h(Ic, { name: "arrow-left", size: 22 }));
     if (lead === "close") leadBtn = h("button", { type: "button", className: "hd-top-icon", "aria-label": "Xir", title: "Xir", onClick: props.onLeading }, h(Ic, { name: "x", size: 22 }));
     return h("div", { className: "hd-top-wrap" },
@@ -537,7 +537,7 @@
 
   /* Menu — every destination that does not fit the bottom nav, grouped under short section labels. */
   function Menu(props) {
-    return h("nav", { className: "hd-menu", "aria-label": props.label || "Liiska" },
+    return h("nav", { className: "hd-menu", "aria-label": props.label || "Tusmada" },
       (props.groups || []).map(function (g, gi) {
         return h("div", { key: gi, className: "hd-menu-group" },
           g.label ? h("div", { className: "hd-menu-label" }, g.label) : null,
