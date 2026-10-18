@@ -46,6 +46,15 @@ const projects = [
   },
 ];
 
+const library = {
+  id: "somali-ui-library",
+  title: "Hiddo",
+  description: "Tokens, icons and components.",
+  tag: "Open",
+  icon: "/figma/hiddo-icon.svg",
+  href: "/hiddo",
+};
+
 const arrowClass =
   "relative h-2.5 w-6 shrink-0 text-[#626264] transition-transform duration-200 before:absolute before:right-0 before:top-1/2 before:h-px before:w-full before:-translate-y-1/2 before:bg-current after:absolute after:right-0 after:top-1/2 after:h-[7px] after:w-[7px] after:-translate-y-1/2 after:rotate-45 after:border-r after:border-t after:border-current group-hover:translate-x-0.5";
 
@@ -150,7 +159,28 @@ export default function Home() {
     >
       <Hero />
 
-      <section id="notes" className="mt-16 scroll-mt-8">
+      <section id="somali-ui" className="mt-16 scroll-mt-8" aria-labelledby="somali-ui-title">
+        <div className="flex items-center justify-between">
+          <h2 id="somali-ui-title" className="text-[15px] font-semibold tracking-[-0.01em] text-white">
+            Somali UI library
+          </h2>
+          <a
+            className="rounded-full text-[14px] text-[#69696c] transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-white/25"
+            href="/hiddo"
+            aria-label="Open the Somali UI library"
+          >
+            open
+          </a>
+        </div>
+        <p className="mt-2 text-[13px] leading-snug text-[#666668]">
+          The first Somali design system — built on our language, names, money and heritage.
+        </p>
+        <div className="mt-5">
+          <BuildItem {...library} />
+        </div>
+      </section>
+
+      <section id="notes" className="mt-12 scroll-mt-8">
         <SectionHeader title="Recent Notes" href="#notes" />
         <div className="mt-4">
           {notes.map((note) => (

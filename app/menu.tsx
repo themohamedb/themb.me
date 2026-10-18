@@ -6,6 +6,7 @@ const menuItems = [
   { label: "about me", href: "#about-me" },
   { label: "resource", href: "#knowledge-hub" },
   { label: "lab", href: "#appliedlab" },
+  { label: "somali ui", href: "/hiddo" },
   { label: "notes", href: "#notes" },
 ];
 

@@ -55,6 +55,16 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Hiddo, the Somali UI library, is a static site in public/hiddo.
+  async rewrites() {
+    return [{ source: "/hiddo", destination: "/hiddo/index.html" }];
+  },
+  async redirects() {
+    return [
+      { source: "/somali-ui", destination: "/hiddo", permanent: false },
+      { source: "/somali-ui-library", destination: "/hiddo", permanent: false },
+    ];
+  },
   async headers() {
     return [
       {
