@@ -31,7 +31,7 @@ ReactDOM.createRoot(document.getElementById('craft-raised')).render(h('div',{cla
   var H = window.Hiddo, h = React.createElement;
   ReactDOM.createRoot(document.getElementById('m-Banner')).render(
     h('div', { className: 'hd-stack' },
-      h(H.Banner, { tone: 'warning', title: 'Shabakaddu way liidataa' }, 'Sawirrada waa la hakiyay. Qoraalka ayaa marka hore soo baxaya.'),
+      h(H.Banner, { tone: 'warning', title: 'Khadka internetku waa daciif' }, 'Sawirrada waa la hakiyay. Qoraalka ayaa marka hore soo baxaya.'),
       h(H.Banner, { tone: 'success', title: 'Waa la kaydiyay' }),
       h(H.Banner, { tone: 'error', title: 'Lacagta lama dirin' }, 'Wax lacag ah lagaama jarin. Isku day mar kale.'),
       h(H.Banner, { tone: 'info', title: 'Waxaa la cusbooneysiiyay 2 saacadood ka hor' }, 'Xogtani ma aha mid toos ah.')));
