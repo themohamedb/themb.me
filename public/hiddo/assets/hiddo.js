@@ -58,9 +58,9 @@
     }
     var full = [value.own, value.father, value.grandfather].filter(Boolean).join(" ");
     return h("fieldset", { className: "hd-name" },
-      h("legend", null, props.legend || "Magacaaga oo dhamaystiran"),
+      h("legend", null, props.legend || "Magacaaga oo buuxa"),
       h(Field, { label: "Magacaaga", sublabel: "Your name", value: value.own, onChange: set("own"), autoComplete: "given-name", autoCapitalize: "words", required: true, error: props.errors && props.errors.own }),
-      h(Field, { label: "Magaca aabbaha", sublabel: "Father's name", value: value.father, onChange: set("father"), autoCapitalize: "words", required: true, error: props.errors && props.errors.father }),
+      h(Field, { label: "Magaca aabaha", sublabel: "Father's name", value: value.father, onChange: set("father"), autoCapitalize: "words", required: true, error: props.errors && props.errors.father }),
       h(Field, { label: "Magaca awoowaha", sublabel: "Grandfather's name", value: value.grandfather, onChange: set("grandfather"), autoCapitalize: "words", required: true, error: props.errors && props.errors.grandfather }),
       props.showNickname === false ? null : h(Field, { label: "Naanays", sublabel: "Nickname, optional", value: value.nickname, onChange: set("nickname"), hint: "Magaca lagugu yaqaan." }),
       full ? h("div", { className: "hd-preview", "aria-live": "polite" }, "Sidan ayuu u muuqan doonaa: ", h("b", null, full)) : null);
@@ -104,7 +104,7 @@
     var totalText = formatAmount(total, currency);
     var totalLabel = (totalText.cur === "$" ? "$" : "SOS ") + totalText.num;
     return h("section", { className: "hd-pay", "aria-labelledby": "hd-pay-title" },
-      h("h3", { id: "hd-pay-title" }, props.title || "Hubi ka hor intaadan dirin"),
+      h("h3", { id: "hd-pay-title" }, props.title || "Hubi ka hor inta aadan dirin"),
       h("div", { className: "hd-who" },
         h("div", { className: "hd-avatar", "aria-hidden": "true" }, initials),
         h("div", null,
@@ -118,7 +118,7 @@
       status === "sent"
         ? h("div", { className: "hd-status hd-status-ok", role: "status" }, h(Icon, { name: "check" }), "Waa la diray — " + props.recipient)
         : h(Button, { block: true, loading: status === "sending", loadingLabel: "Waa la dirayaa…", onClick: props.onConfirm }, "Dir " + totalLabel),
-      status === "error" ? h(Banner, { tone: "error", title: "Lacagta lama dirin" }, "Wax lacag ah lagaama jarin. Hubi xiriirka internetka oo isku day mar kale.") : null);
+      status === "error" ? h(Banner, { tone: "error", title: "Lacagta lama dirin" }, "Wax lacag ah lagaama jarin. Hubi internetkaaga oo isku day mar kale.") : null);
   }
 
   var LANGS = [{ code: "so", label: "Soomaali" }, { code: "en", label: "English" }, { code: "ar", label: "العربية" }];
@@ -496,12 +496,12 @@
         h("div", null, h("div", { className: "hd-steps", "aria-hidden": "true" }, h("i", { className: "on" }), h("i", null)),
           h("h2", { className: "hd-form-title", style: { marginTop: 16 } }, "Lacag u dir"),
           h("p", { className: "hd-form-sub" }, "Lacagtu waxay gaartaa dhowr ilbiriqsi gudahood.")),
-        h(Input, { label: "Lambarka telefoonka", icon: "phone", prefix: "+252", defaultValue: "61 000 0000", inputMode: "tel", autoComplete: "tel-national", hint: "Magaca qofka ayaa soo baxaya ka hor intaadan dirin." }),
+        h(Input, { label: "Lambarka telefoonka", icon: "phone", prefix: "+252", defaultValue: "61 000 0000", inputMode: "tel", autoComplete: "tel-national", hint: "Magaca qofka ayaa soo baxaya ka hor inta aadan dirin." }),
         h(Input, { label: "Lacagta", numeric: true, prefix: "$", addon: "USD", value: amt[0], onChange: function (e) { amt[1](e.target.value); } }),
         h(RadioGroup, { legend: "Sida qofku lacagta u helayo", options: [
-          { value: "mobile", label: "Lacagta mobilka", description: "EVC Plus, Zaad, Sahal", icon: "mobile-wallet" },
+          { value: "mobile", label: "Lacagaha mobilka", description: "EVC Plus, Zaad, Sahal", icon: "mobile-wallet" },
           { value: "bank", label: "Akoon bangi", description: "1–2 maalmood", icon: "card" },
-          { value: "hawala", label: "Xafiiska xawaaladda", description: "Lacag caddaan ah", icon: "remittance" }] }),
+          { value: "hawala", label: "Xawaalad", description: "Lacag caddaan ah", icon: "remittance" }] }),
         h(Textarea, { label: "Fariin", optional: true, max: 120, rows: 2, defaultValue: "Hooyo, kani waa kharashka bishan." }),
         h(Checkbox, { label: "Kaydi qofkan", description: "Mar dambe si dhakhso ah ugu dir.", defaultChecked: true }),
         h("div", { className: "hd-form-actions" }, h(Button, { block: true, type: "submit" }, "Sii wad", h(Ic, { name: "arrow-right", size: 18 })))));

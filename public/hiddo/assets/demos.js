@@ -106,7 +106,7 @@ ReactDOM.createRoot(document.getElementById('craft-raised')).render(h('div',{cla
     h('div', null,
       h(H.ListRow, { title: 'Amina Yusuf Ibrahim', subtitle: 'La diray · EVC Plus', amount: -25, meta: 'Maanta 10:24', onClick: function () {} }),
       h(H.ListRow, { title: 'Cabdi Xasan Faarax', subtitle: 'La helay · Zaad', amount: 120, meta: 'Shalay', onClick: function () {} }),
-      h(H.ListRow, { title: 'Hormuud Telecom', subtitle: 'Kaarka hadalka', amount: -5, meta: 'Isniin', badge: h(H.Badge, { tone: 'warning' }, 'La sugayo'), onClick: function () {} })));
+      h(H.ListRow, { title: 'Hormuud Telecom', subtitle: 'Kaar ku shubasho', amount: -5, meta: 'Isniin', badge: h(H.Badge, { tone: 'warning' }, 'La sugayo'), onClick: function () {} })));
 }catch(e){console.error('ListRow',e);}})();
 (function(){try{
   var H = window.Hiddo, h = React.createElement;
@@ -153,9 +153,9 @@ ReactDOM.createRoot(document.getElementById('craft-raised')).render(h('div',{cla
   ReactDOM.createRoot(document.getElementById('m-RadioGroup')).render(
     h('div', { className: 'hd-stack' },
       h(H.RadioGroup, { legend: 'Sida qofku lacagta u helayo', options: [
-        { value: 'mobile', label: 'Lacagta mobilka', description: 'EVC Plus, Zaad, Sahal', icon: 'mobile-wallet' },
+        { value: 'mobile', label: 'Lacagaha mobilka', description: 'EVC Plus, Zaad, Sahal', icon: 'mobile-wallet' },
         { value: 'bank', label: 'Akoon bangi', description: '1–2 maalmood', icon: 'card' },
-        { value: 'hawala', label: 'Xafiiska xawaaladda', description: 'Lacag caddaan ah', icon: 'remittance' }] })));
+        { value: 'hawala', label: 'Xawaalad', description: 'Lacag caddaan ah', icon: 'remittance' }] })));
 }catch(e){console.error('RadioGroup',e);}})();
 (function(){try{
   var H = window.Hiddo, h = React.createElement;
