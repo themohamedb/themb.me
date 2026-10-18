@@ -203,3 +203,13 @@ pre.code[hidden] { display: none; }
 .nv td:nth-child(2) { color: var(--text-primary); font-weight: 600; white-space: nowrap; }
 .nv td a { color: var(--text-link); }
 @media (max-width: 960px) { .nav-lex { grid-template-columns: 1fr; } .nl-demo { grid-row: auto; position: static; max-width: 400px; } .nv { grid-column: auto; } }
+
+.tag-ready { background: var(--status-success-tint); color: var(--status-success); }
+.nv-test p { margin: 0 0 8px; color: var(--text-secondary); }
+.nv-test ol { margin: 8px 0 0; padding-left: 22px; color: var(--text-secondary); font-size: 15px; line-height: 23px; }
+.nv-test li { margin: 6px 0; }
+.nv-test li b, .nv-test li em { color: var(--text-primary); }
+.short-tile { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border: 0; border-radius: 14px; background: var(--bg-raised); box-shadow: var(--shadow-raised); color: var(--text-primary); font: 500 13px/16px var(--font-sans); cursor: pointer; }
+.nv td:nth-child(3) { white-space: nowrap; }
+#gaaban .nv td:nth-child(2) { font-weight: 400; color: var(--text-secondary); }
+#gaaban .nv td:nth-child(3) { font-weight: 700; color: var(--text-primary); font-size: 16px; }

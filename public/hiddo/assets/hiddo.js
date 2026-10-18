@@ -180,7 +180,9 @@
   ];
   /* 3–5 destinations, labels always visible, active = bolder stroke + label + indicator. */
   function BottomNav(props) {
-    var items = props.items || DEFAULT_NAV;
+    var items = props.items || (props.short ? [
+      { key: "home", label: "Guri", icon: "home" }, { key: "history", label: "Taariikh", icon: "history" },
+      { key: "pay", label: "Bixi", icon: "qr" }, { key: "account", label: "Aniga", icon: "user" }] : DEFAULT_NAV);
     var st = useState(props.defaultValue || items[0].key);
     var value = props.value || st[0];
     return h("nav", { className: "hd-bnav", "aria-label": props.label || "Bogagga" },
@@ -509,6 +511,47 @@
   }
 
 
+
+  /* Hiddo words: the standard UI word and its short form ("Erayo gaaban").
+     Short forms come from words every generation already says; status "test" = run the three-generation test before shipping. */
+  var WORDS = {
+    home:          { en: "Home",          so: "Bogga hore",  short: "Guri",     status: "test" },
+    explore:       { en: "Explore",       so: "Sahan",       short: "Sahan",    status: "test" },
+    search:        { en: "Search",        so: "Raadi",       short: "Raadi",    status: "ready" },
+    history:       { en: "History",       so: "Taariikhda",  short: "Taariikh", status: "ready" },
+    notifications: { en: "Notifications", so: "Ogeysiis",    short: "War",      status: "test" },
+    messages:      { en: "Messages",      so: "Fariimaha",   short: "Fariin",   status: "ready" },
+    wallet:        { en: "Wallet",        so: "Boorsada",    short: "Jeeb",     status: "test" },
+    account:       { en: "Account",       so: "Akoonka",     short: "Aniga",    status: "test" },
+    saved:         { en: "Saved",         so: "Kaydsan",     short: "Kayd",     status: "test" },
+    trending:      { en: "Trending",      so: "Caan",        short: "Caan",     status: "test" },
+    live:          { en: "Live",          so: "Toos",        short: "Toos",     status: "ready" },
+    cart:          { en: "Cart",          so: "Dambiil",     short: "Dambiil",  status: "test" },
+    orders:        { en: "Orders",        so: "Dalabyada",   short: "Dalab",    status: "ready" },
+    settings:      { en: "Settings",      so: "Habaynta",    short: "Habayn",   status: "test" },
+    menu:          { en: "Menu",          so: "Tusmada",     short: "Tusmo",    status: "test" },
+    more:          { en: "More",          so: "Dheeraad",    short: "Kale",     status: "test" },
+    help:          { en: "Help",          so: "Caawimaad",   short: "Caawi",    status: "test" },
+    pay:           { en: "Pay",           so: "Bixi",        short: "Bixi",     status: "ready" },
+    send:          { en: "Send",          so: "Dir",         short: "Dir",      status: "ready" },
+    receive:       { en: "Receive",       so: "Lacag hel",   short: "Hel",      status: "test" },
+    scan:          { en: "Scan",          so: "Akhri koodhka QR", short: "Sawir", status: "test" },
+    signup:        { en: "Sign up",       so: "Samee akoon", short: "Ku biir",  status: "test" },
+    login:         { en: "Log in",        so: "Soo gal",     short: "Gal",      status: "test" },
+    logout:        { en: "Log out",       so: "Ka bax",      short: "Bax",      status: "test" },
+    cancel:        { en: "Cancel",        so: "Ka noqo",     short: "Iska daa", status: "test" },
+    retry:         { en: "Try again",     so: "Isku day mar kale", short: "Mar kale", status: "ready" },
+    share:         { en: "Share",         so: "La wadaag",   short: "Wadaag",   status: "test" },
+    copy:          { en: "Copy",          so: "Koobiyee",    short: "Koobi",    status: "test" },
+    filter:        { en: "Filter",        so: "Kala sooc",   short: "Sooc",     status: "test" },
+    ok:            { en: "OK",            so: "Hagaag",      short: "Hagaag",   status: "ready" },
+    back:          { en: "Back",          so: "Dib u noqo",  short: "Dib",      status: "ready" },
+    close:         { en: "Close",         so: "Xir",         short: "Xir",      status: "ready" },
+    error:         { en: "Error",         so: "Cilad",       short: "Cilad",    status: "ready" },
+    loading:       { en: "Loading",       so: "Sug…",        short: "Sug…",     status: "test" }
+  };
+  function word(key, short) { var w = WORDS[key]; return w ? (short ? w.short : w.so) : key; }
+
   /* ---------- Navigation lexicon: TopBar and Menu ---------- */
 
   /* TopBar — the bar at the top of a screen.
@@ -519,7 +562,7 @@
     var leadBtn = null;
     if (lead === "menu") leadBtn = h("button", { type: "button", className: "hd-top-menu", "aria-expanded": open[0] ? "true" : "false", "aria-controls": "hd-top-menu-panel",
         onClick: function () { open[1](!open[0]); if (props.onLeading) props.onLeading(); } },
-        h(Ic, { name: open[0] ? "x" : "menu", size: 20 }), h("span", null, open[0] ? "Xir" : "Tusmada"));
+        h(Ic, { name: open[0] ? "x" : "menu", size: 20 }), h("span", null, open[0] ? "Xir" : word("menu", props.short)));
     if (lead === "back") leadBtn = h("button", { type: "button", className: "hd-top-icon", "aria-label": "Dib u noqo", title: "Dib u noqo", onClick: props.onLeading }, h(Ic, { name: "arrow-left", size: 22 }));
     if (lead === "close") leadBtn = h("button", { type: "button", className: "hd-top-icon", "aria-label": "Xir", title: "Xir", onClick: props.onLeading }, h(Ic, { name: "x", size: 22 }));
     return h("div", { className: "hd-top-wrap" },
@@ -552,7 +595,7 @@
   }
 
   window.Hiddo = Object.assign(window.Hiddo || {}, {
-    TopBar: TopBar, Menu: Menu,
+    TopBar: TopBar, Menu: Menu, WORDS: WORDS, word: word,
     Icon: Ic, ICONS: Object.keys(ICONS), SOMALI_ICONS: SOMALI_ICONS,
     Input: Input, Select: Select, Textarea: Textarea, Checkbox: Checkbox, RadioGroup: RadioGroup, Switch: Switch,
     OTPInput: OTPInput, SegmentedControl: SegmentedControl, Chips: Chips, Tray: Tray, Receipt: Receipt, SendMoneyForm: SendMoneyForm

@@ -1,4 +1,13 @@
 (function(){try{var H=window.Hiddo,h=React.createElement;
+var sd=document.getElementById('short-demo'); if(sd){ var SD=function(){ var st=React.useState('g'); var sh=st[0]==='g'; var W=function(k){return H.word(k,sh);};
+ return h('div',null, h('div',{style:{display:'flex',justifyContent:'center',marginBottom:14}}, h(H.SegmentedControl,{options:[{value:'c',label:'Caadi'},{value:'g',label:'Gaaban'}],value:st[0],onChange:st[1]})),
+ h('div',{className:'lex-phone'},
+  h(H.TopBar,{key:st[0],short:sh,title:W('home'),menu:{groups:[{label:sh?'Lacag':'Adeegyada',items:[{icon:'send',label:W('send')},{icon:'receive',label:W('receive')},{icon:'scan',label:W('scan')}]},{label:W('account'),items:[{icon:'settings',label:W('settings')},{icon:'info',label:W('help')},{icon:'arrow-right',label:W('logout')}]}]},actions:[{icon:'search',label:W('search')},{icon:'bell',label:W('notifications'),badge:true}]}),
+  h('div',{className:'lex-body'}, h(H.Tray,null,h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}},h('div',null,h('div',{className:'hd-hint'},'Haraaga'),h(H.Amount,{value:1250,size:'lg'})),h(H.Button,{size:'sm'},W('send')))),
+   h('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:8,marginTop:16}}, [['send','send'],['receive','receive'],['scan','scan'],['wallet','wallet']].map(function(x){return h('button',{key:x[0],type:'button',className:'short-tile'},h(H.Icon,{name:x[1]==='wallet'?'mobile-wallet':x[1],size:22}),h('span',null,W(x[0])));})),
+   h('div',{style:{display:'flex',gap:8,flexWrap:'wrap',marginTop:16}},h(H.Button,{variant:'secondary',size:'sm'},W('login')),h(H.Button,{variant:'secondary',size:'sm'},W('signup')),h(H.Button,{variant:'quiet',size:'sm'},W('cancel')))),
+  h(H.BottomNav,{key:'b'+st[0],short:sh}))); };
+ ReactDOM.createRoot(sd).render(h(SD)); }
 var lx=document.getElementById('lex-demo'); if(lx) ReactDOM.createRoot(lx).render(h('div',{className:'lex-phone'},
  h(H.TopBar,{title:'Bogga hore',menu:{groups:[{label:'Adeegyada',items:[{icon:'send',label:'Lacag dir'},{icon:'mobile-wallet',label:'Kaar ku shubasho'}]},{label:'Akoonka',items:[{icon:'settings',label:'Habaynta'},{icon:'globe',label:'Luqadda',description:'Soomaali'},{icon:'info',label:'Caawimaad'}]}]},actions:[{icon:'search',label:'Raadi'},{icon:'bell',label:'Ogeysiis',badge:true}]}),
  h('div',{className:'lex-body'},h(H.Tray,null,h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}},h('div',null,h('div',{className:'hd-hint'},'Haraaga'),h(H.Amount,{value:1250,size:'lg'})),h(H.Button,{size:'sm'},'Lacag dir'))),
