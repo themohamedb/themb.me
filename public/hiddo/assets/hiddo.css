@@ -338,3 +338,33 @@ button.hd-listrow:hover, a.hd-listrow:hover { background: var(--action-secondary
 @media (prefers-reduced-motion: reduce) { .hd-receipt { animation: none; } .hd-thumb, .hd-dot::after, .hd-thumb::after, .hd-seg button, .hd-control { transition: none; } .hd-otp-cell.is-active:empty::after { animation: none; } }
 
 .hd-date-hijri { white-space: nowrap; font-size: 13px; }
+
+/* ---------- Navigation lexicon: TopBar + Menu ---------- */
+.hd-top-wrap { position: relative; }
+.hd-top { display: flex; align-items: center; gap: var(--space-2); min-height: 60px; padding: var(--space-2) var(--space-3); background: var(--bg-canvas); border-bottom: 1px solid var(--border-subtle); }
+.hd-top-menu { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px 0 10px; border: 0; border-radius: var(--radius-pill); background: var(--bg-raised); box-shadow: var(--shadow-raised); color: var(--text-primary); font: 600 14px/1 var(--font-sans); cursor: pointer; }
+.hd-top-menu:active { transform: translateY(1px); }
+.hd-top-menu[aria-expanded="true"] { background: var(--bg-inverse); color: var(--text-inverse); box-shadow: none; }
+.hd-top-icon { position: relative; flex: none; display: grid; place-items: center; width: var(--size-target); height: var(--size-target); border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--text-primary); cursor: pointer; }
+.hd-top-icon:hover { background: var(--action-secondary); }
+.hd-top-menu:focus-visible, .hd-top-icon:focus-visible, .hd-menu-item:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.hd-top-dot { position: absolute; top: 11px; right: 12px; width: 8px; height: 8px; border-radius: 50%; background: var(--status-error); box-shadow: 0 0 0 2px var(--bg-canvas); }
+.hd-top-title { flex: 1; min-width: 0; padding: 0 var(--space-1); }
+.hd-top-title h1 { margin: 0; font: 600 18px/24px var(--font-display); letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hd-top-title p { margin: 0; font-size: 13px; line-height: 18px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hd-top-actions { flex: none; display: flex; align-items: center; gap: 2px; }
+.hd-top-actions .hd-btn { margin-left: var(--space-2); }
+.hd-top-panel { position: absolute; left: 0; right: 0; top: 100%; z-index: 30; padding: var(--space-2); background: var(--bg-canvas); border-bottom: 1px solid var(--border-subtle); box-shadow: var(--shadow-popover); animation: hd-drop var(--duration-base) ease-out both; }
+@keyframes hd-drop { from { opacity: 0; transform: translateY(-6px); } }
+.hd-menu { display: flex; flex-direction: column; gap: var(--space-4); }
+.hd-menu-group ul { margin: 0; padding: 4px; list-style: none; border-radius: var(--radius-lg); background: var(--bg-tray); box-shadow: var(--shadow-inset); }
+.hd-menu-label { padding: 0 var(--space-3) var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-tertiary); }
+.hd-menu-item { display: flex; align-items: center; gap: var(--space-3); width: 100%; min-height: 56px; padding: 8px 12px; border: 0; border-radius: 12px; background: transparent; color: var(--text-primary); font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.hd-menu-item:hover { background: var(--bg-raised); box-shadow: var(--shadow-raised); }
+.hd-menu-ic { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--bg-raised); box-shadow: var(--shadow-raised); }
+.hd-menu-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.hd-menu-text b { font: 500 16px/22px var(--font-sans); }
+.hd-menu-text small { font-size: 13px; line-height: 18px; color: var(--text-secondary); }
+.hd-menu-chev { color: var(--text-tertiary); }
+.hd-menu-badge { min-width: 22px; height: 22px; padding: 0 7px; border-radius: 11px; background: var(--status-error); color: #fff; font: 600 12px/22px var(--font-mono); text-align: center; }
+@media (prefers-reduced-motion: reduce) { .hd-top-panel { animation: none; } }

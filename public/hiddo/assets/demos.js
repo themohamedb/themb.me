@@ -1,4 +1,9 @@
 (function(){try{var H=window.Hiddo,h=React.createElement;
+var lx=document.getElementById('lex-demo'); if(lx) ReactDOM.createRoot(lx).render(h('div',{className:'lex-phone'},
+ h(H.TopBar,{title:'Bogga hore',menu:{groups:[{label:'Adeegyada',items:[{icon:'send',label:'Lacag dir'},{icon:'mobile-wallet',label:'Kaar ku shubasho'}]},{label:'Akoonka',items:[{icon:'settings',label:'Habaynta'},{icon:'globe',label:'Luqadda',description:'Soomaali'},{icon:'info',label:'Caawimaad'}]}]},actions:[{icon:'search',label:'Raadi'},{icon:'bell',label:'Ogeysiis',badge:true}]}),
+ h('div',{className:'lex-body'},h(H.Tray,null,h('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12}},h('div',null,h('div',{className:'hd-hint'},'Haraaga'),h(H.Amount,{value:1250,size:'lg'})),h(H.Button,{size:'sm'},'Lacag dir'))),
+  h('div',{style:{display:'flex',gap:8,flexWrap:'wrap',marginTop:16}},h(H.Button,{variant:'secondary',size:'sm'},'Soo gal'),h(H.Button,{variant:'secondary',size:'sm'},'Samee akoon'),h(H.Button,{variant:'quiet',size:'sm'},'Ka bood'))),
+ h(H.BottomNav,null)));
 ReactDOM.createRoot(document.getElementById('craft-carved')).render(h('div',{className:'hd-stack'},
  h(H.Input,{label:'Lacagta',numeric:true,prefix:'$',addon:'USD',defaultValue:'25.00',hint:'Khidmadda: Bilaash'}),
  h(H.OTPInput,{label:'Koodhka xaqiijinta',defaultValue:'4827'})));
@@ -41,7 +46,7 @@ ReactDOM.createRoot(document.getElementById('craft-raised')).render(h('div',{cla
   ReactDOM.createRoot(document.getElementById('m-BottomNav')).render(
     h(H.BottomNav, { items: [
       { key: 'home', label: 'Bogga hore', icon: 'home' },
-      { key: 'activity', label: 'Dhaqdhaqaaqa', icon: 'activity', badge: 2 },
+      { key: 'history', label: 'Taariikhda', icon: 'history', badge: 2 },
       { key: 'pay', label: 'Bixi', icon: 'qr' },
       { key: 'account', label: 'Akoonka', icon: 'user' }] }));
 }catch(e){console.error('BottomNav',e);}})();
@@ -108,6 +113,20 @@ ReactDOM.createRoot(document.getElementById('craft-raised')).render(h('div',{cla
       h(H.ListRow, { title: 'Cabdi Xasan Faarax', subtitle: 'La helay · Zaad', amount: 120, meta: 'Shalay', onClick: function () {} }),
       h(H.ListRow, { title: 'Hormuud Telecom', subtitle: 'Kaar ku shubasho', amount: -5, meta: 'Isniin', badge: h(H.Badge, { tone: 'warning' }, 'La sugayo'), onClick: function () {} })));
 }catch(e){console.error('ListRow',e);}})();
+(function(){try{
+  var H = window.Hiddo, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('m-Menu')).render(
+    h(H.Menu, { groups: [
+      { label: 'Adeegyada', items: [
+        { icon: 'send', label: 'Lacag dir' },
+        { icon: 'mobile-wallet', label: 'Kaar ku shubasho' },
+        { icon: 'download', label: 'Dajinta', badge: 3 }] },
+      { label: 'Akoonka', items: [
+        { icon: 'user', label: 'Akoonka', description: 'Amina Yusuf Ibrahim' },
+        { icon: 'settings', label: 'Habaynta' },
+        { icon: 'info', label: 'Caawimaad' },
+        { icon: 'arrow-right', label: 'Ka bax' }] }] }));
+}catch(e){console.error('Menu',e);}})();
 (function(){try{
   var H = window.Hiddo, h = React.createElement;
   ReactDOM.createRoot(document.getElementById('m-NameField')).render(
@@ -221,6 +240,23 @@ ReactDOM.createRoot(document.getElementById('craft-raised')).render(h('div',{cla
     h('div', { className: 'hd-stack' },
       h(H.Textarea, { label: 'Fariin', optional: true, max: 120, rows: 3, defaultValue: 'Hooyo, kani waa kharashka bishan.' })));
 }catch(e){console.error('Textarea',e);}})();
+(function(){try{
+  var H = window.Hiddo, h = React.createElement;
+  var menu = { groups: [
+    { label: 'Lacagta', items: [
+      { icon: 'send', label: 'Lacag dir' },
+      { icon: 'mobile-wallet', label: 'Kaar ku shubasho', description: 'EVC Plus, Zaad, Sahal' },
+      { icon: 'remittance', label: 'Xawaalad' }] },
+    { label: 'Akoonka', items: [
+      { icon: 'settings', label: 'Habaynta' },
+      { icon: 'globe', label: 'Luqadda', description: 'Soomaali' },
+      { icon: 'info', label: 'Caawimaad' }] }] };
+  ReactDOM.createRoot(document.getElementById('m-TopBar')).render(
+    h('div', { className: 'hd-stack', style: { gap: 20 } },
+      h(H.TopBar, { title: 'Bogga hore', menu: menu, actions: [{ icon: 'search', label: 'Raadi' }, { icon: 'bell', label: 'Ogeysiis', badge: true }] }),
+      h(H.TopBar, { leading: 'back', title: 'Taariikhda', sub: 'Oktoobar 2026', actions: [{ icon: 'filter', label: 'Kala sooc' }] }),
+      h(H.TopBar, { leading: 'close', title: 'Lacag u dir', cta: h(H.Button, { size: 'sm' }, 'Sii wad') })));
+}catch(e){console.error('TopBar',e);}})();
 (function(){try{
   var H = window.Hiddo, h = React.createElement;
   ReactDOM.createRoot(document.getElementById('m-Tray')).render(
