@@ -53,8 +53,18 @@ const securityHeaders = [
   },
 ];
 
+// Choices (github.com/themohamedb/choices) is a separate Vercel project built with
+// basePath "/choices"; themb.me/choices/* is served from it.
+const choicesOrigin = process.env.CHOICES_ORIGIN ?? "https://choices-tau.vercel.app";
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async rewrites() {
+    return [
+      { source: "/choices", destination: `${choicesOrigin}/choices` },
+      { source: "/choices/:path*", destination: `${choicesOrigin}/choices/:path*` },
+    ];
+  },
   async headers() {
     return [
       {
