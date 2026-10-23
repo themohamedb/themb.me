@@ -2,21 +2,7 @@ import Image from "next/image";
 import { FloatingMenuButton } from "./menu";
 
 const notes = [
-  {
-    title: "Bringing Cursor to Somalia",
-    description: "Giving access to the frontier tools to Somali builders",
-    href: "#notes",
-  },
-  {
-    title: "Building with ai",
-    description: "tools and stacks",
-    href: "#notes",
-  },
-  {
-    title: "The best i read month",
-    description: "what i learned from this week",
-    href: "#notes",
-  },
+  { title: "Redesigning Nasiye through user research", description: "Local and diaspora interviews, research, and prototyping.", href: "/writing/redesigning-nasiye" },
 ];
 
 const projects = [
@@ -119,9 +105,7 @@ function Hero() {
         I’m Mohamed B.
       </h1>
       <p className="max-w-full text-[16px] leading-[1.26] text-[#737377]">
-        I design, build, and test to understand the world around me. This is my piece of the
-        internet, where I document the journey, share what I’m building, and explore the future with
-        AI.
+        I work across product, design, and technology. As Product Development Manager at Nasiye, I connect user research, interface design, prototyping, and delivery. I’m pursuing an MBA in Conventional Finance to deepen my understanding of financial services and apply it to fintech product development.
       </p>
 
       <div className="mt-6 flex flex-wrap items-center gap-3 min-[360px]:gap-4" aria-label="Content sections">
@@ -149,6 +133,17 @@ export default function Home() {
       className="relative mx-auto min-h-svh w-full max-w-[390px] overflow-x-hidden px-5 pb-28 pt-[clamp(68px,12vw,104px)] min-[390px]:px-6"
     >
       <Hero />
+
+      <section id="experience" className="mt-16 scroll-mt-8" aria-labelledby="experience-title">
+        <h2 id="experience-title" className="text-[15px] font-semibold text-white">Experience</h2>
+        <div className="mt-5 space-y-6">
+          <article><h3 className="text-[15px] text-white">Product Development Manager</h3><p className="mt-1 text-[13px] text-[#a0a0a5]">Nasiye · 2025–Present</p><p className="mt-2 text-[14px] leading-relaxed text-[#a0a0a5]">User research, UI/UX design, prototyping, and engineering coordination. Conducted interviews with users locally and in the Somali diaspora to inform the redesign.</p></article>
+          <article><h3 className="text-[15px] text-white">Digital Marketing Officer</h3><p className="mt-1 text-[13px] text-[#a0a0a5]">Guluub Marketing Agency · 2024–2025</p><p className="mt-2 text-[14px] leading-relaxed text-[#a0a0a5]">Created campaigns and content, reviewed campaign performance, and trained clients on marketing tools.</p></article>
+          <article><h3 className="text-[15px] text-white">Social Media Manager</h3><p className="mt-1 text-[13px] text-[#a0a0a5]">SIMAD Graduate Studies · 2023–2024</p><p className="mt-2 text-[14px] leading-relaxed text-[#a0a0a5]">Planned and published content, managed audience interactions, and used performance insights to refine campaigns.</p></article>
+          <article><h3 className="text-[15px] text-white">Digital Marketing and Design Lead</h3><p className="mt-1 text-[13px] text-[#a0a0a5]">Elite Analytica · 2022–2023</p><p className="mt-2 text-[14px] leading-relaxed text-[#a0a0a5]">Designed digital campaign assets, website layouts, infographics, and presentations.</p></article>
+        </div>
+      </section>
+
 
       <section id="notes" className="mt-16 scroll-mt-8">
         <SectionHeader title="Recent Notes" href="#notes" />
